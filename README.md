@@ -4,7 +4,7 @@ Forked from the amazingly popular original Xamarin.Forms.PancakeView Library, th
 [![NuGet](https://img.shields.io/nuget/v/PancakeViewCompat.svg?label=nuget)](https://www.nuget.org/packages/PancakeViewCompat)
 
 Install NuGet(s)
-Add .UsePancakeViewCompat() to your MAUI app builder.
+Add `.UsePancakeViewCompat()` to your MAUI app builder.
 
 ## Original Doc
 
