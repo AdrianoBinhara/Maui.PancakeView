@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
     public class PancakeView : ContentView, IBorderElement
     {

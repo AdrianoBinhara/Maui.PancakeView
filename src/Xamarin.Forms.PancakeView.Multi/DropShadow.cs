@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
     public class DropShadow : BindableObject
     {
@@ -36,7 +36,7 @@ namespace Xamarin.Forms.PancakeView
         }
 
         public static readonly BindableProperty ColorProperty = BindableProperty.Create(
-            nameof(Color), typeof(Color), typeof(DropShadow), Color.Black);
+            nameof(Color), typeof(Color), typeof(DropShadow), Colors.Black);
 
         public Color Color
         {

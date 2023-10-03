@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+    <UseMaui>true</UseMaui>
+    <TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+    <SingleProject>true</SingleProject>
+		<!--Assembly and Namespace info -->
+		<AssemblyName>PancakeViewCompat</AssemblyName>
+		<RootNamespace>PancakeViewCompat</RootNamespace>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<AssemblyVersion>6.0.1</AssemblyVersion>
+		<AssemblyFileVersion>6.0.1</AssemblyFileVersion>
+		<Version>6.0.1-pre</Version>
+		<PackOnBuild>true</PackOnBuild>
+		<NeutralLanguage>en</NeutralLanguage>
+		<LangVersion>default</LangVersion>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<LangVersion>latest</LangVersion>
+		<PackageReleaseNotes>https://github.com/felipebaltazar/Maui.PancakeView/releases</PackageReleaseNotes>
+		<PackageProjectUrl>https://github.com/felipebaltazar/Maui.PancakeView</PackageProjectUrl>
+		<PackageIconUrl>https://raw.githubusercontent.com/felipebaltazar/Maui.PancakeView/master/images/icon.png</PackageIconUrl>
+		<RepositoryUrl>https://github.com/felipebaltazar/Maui.PancakeView</RepositoryUrl>
+		<PackageTags>maui, control, rounded corners, gradient, shadow, border, uwp, shape, polygon, view</PackageTags>
+		<Title>PancakeView for Maui</Title>
+		<Summary>An extended ContentView for Maui with rounded corners, borders, shadows and more!</Summary>
+		<Description>An extended ContentView for Maui with rounded corners, borders, shadows and more!</Description>
+		<Owners>Felipe Baltazar</Owners>
+		<Authors>Felipe Baltazar</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+	<!-- Define what happens on build and release -->
+	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+	</PropertyGroup>
+  
+	<PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<DebugType>pdbonly</DebugType>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+  
+	<PropertyGroup>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+	</PropertyGroup>
+  
+	<ItemGroup>
+	  <AndroidLibrary Remove="Platforms\GTK\**" />
+	  <AndroidLibrary Remove="Platforms\macOS\**" />
+	  <AndroidLibrary Remove="Platforms\Tizen\**" />
+	  <AndroidLibrary Remove="Platforms\UWP\**" />
+	  <AndroidLibrary Remove="Platforms\WPF\**" />
+	  <AndroidNativeLibrary Remove="Platforms\GTK\**" />
+	  <AndroidNativeLibrary Remove="Platforms\macOS\**" />
+	  <AndroidNativeLibrary Remove="Platforms\Tizen\**" />
+	  <AndroidNativeLibrary Remove="Platforms\UWP\**" />
+	  <AndroidNativeLibrary Remove="Platforms\WPF\**" />
+	  <Compile Remove="Platforms\GTK\**" />
+	  <Compile Remove="Platforms\macOS\**" />
+	  <Compile Remove="Platforms\Tizen\**" />
+	  <Compile Remove="Platforms\UWP\**" />
+	  <Compile Remove="Platforms\WPF\**" />
+	  <EmbeddedResource Remove="Platforms\GTK\**" />
+	  <EmbeddedResource Remove="Platforms\macOS\**" />
+	  <EmbeddedResource Remove="Platforms\Tizen\**" />
+	  <EmbeddedResource Remove="Platforms\UWP\**" />
+	  <EmbeddedResource Remove="Platforms\WPF\**" />
+	  <JavaSourceJar Remove="Platforms\GTK\**" />
+	  <JavaSourceJar Remove="Platforms\macOS\**" />
+	  <JavaSourceJar Remove="Platforms\Tizen\**" />
+	  <JavaSourceJar Remove="Platforms\UWP\**" />
+	  <JavaSourceJar Remove="Platforms\WPF\**" />
+	  <None Remove="Platforms\GTK\**" />
+	  <None Remove="Platforms\macOS\**" />
+	  <None Remove="Platforms\Tizen\**" />
+	  <None Remove="Platforms\UWP\**" />
+	  <None Remove="Platforms\WPF\**" />
+	  <TransformFile Remove="Platforms\GTK\**" />
+	  <TransformFile Remove="Platforms\macOS\**" />
+	  <TransformFile Remove="Platforms\Tizen\**" />
+	  <TransformFile Remove="Platforms\UWP\**" />
+	  <TransformFile Remove="Platforms\WPF\**" />
+	</ItemGroup>
+  
+	<ItemGroup>
+		<PackageReference Include="System.ComponentModel" Version="4.3.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+	</ItemGroup>
+  
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid10')) ">
+		<Compile Include="Platforms\Android\**\*.cs" />
+		<PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.4" />
+	</ItemGroup>
+  
+</Project>

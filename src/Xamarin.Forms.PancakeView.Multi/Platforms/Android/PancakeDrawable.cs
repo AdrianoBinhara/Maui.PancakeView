@@ -1,12 +1,14 @@
 ﻿using Android.Graphics;
 using Android.Graphics.Drawables;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using System;
 using System.ComponentModel;
 using System.Linq;
-using Xamarin.Forms.Platform.Android;
 using ACanvas = Android.Graphics.Canvas;
+using Paint = Android.Graphics.Paint;
+using Path = Android.Graphics.Path;
 
-namespace Xamarin.Forms.PancakeView.Droid
+namespace Maui.PancakeView.Droid
 {
     public class PancakeDrawable : Drawable
     {

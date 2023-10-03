@@ -2,7 +2,7 @@
 using Android.Graphics;
 using Android.Views;
 
-namespace Xamarin.Forms.PancakeView.Droid
+namespace Maui.PancakeView.Droid
 {
     public class RoundedCornerOutlineProvider : ViewOutlineProvider
     {

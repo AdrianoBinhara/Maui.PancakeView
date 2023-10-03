@@ -1,26 +1,21 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
-using Android.Runtime;
-#if MONOANDROID10_0
 using AndroidX.Core.View;
-#else
-using Android.Support.V4.View;
-#endif
-using Xamarin.Forms;
-using Xamarin.Forms.PancakeView.Droid;
-using Xamarin.Forms.Platform.Android;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Controls.Platform;
+using Microsoft.Maui.Platform;
+using System.ComponentModel;
 using ACanvas = Android.Graphics.Canvas;
-using Controls = Xamarin.Forms.PancakeView;
+using Controls = Maui.PancakeView;
+using Paint = Android.Graphics.Paint;
+using Path = Android.Graphics.Path;
+using RectF = Android.Graphics.RectF;
 
-[assembly: ExportRenderer(typeof(Controls.PancakeView), typeof(PancakeViewRenderer))]
-namespace Xamarin.Forms.PancakeView.Droid
+namespace Maui.PancakeView.Droid
 {
-    public class PancakeViewRenderer : VisualElementRenderer<PancakeView>
+    public class PancakeViewRenderer : Microsoft.Maui.Controls.Handlers.Compatibility.VisualElementRenderer<PancakeView>
     {
         bool _disposed;
         bool _drawableEnabled;
@@ -28,11 +23,6 @@ namespace Xamarin.Forms.PancakeView.Droid
         Drawable _defaultDrawable;
 
         public PancakeViewRenderer(Context context) : base(context)
-        {
-        }
-
-        [Obsolete]
-        public PancakeViewRenderer(IntPtr handle, JniHandleOwnership transfer) : base(Xamarin.Forms.Forms.Context)
         {
         }
 
@@ -89,14 +79,12 @@ namespace Xamarin.Forms.PancakeView.Droid
                 {
                     ViewCompat.SetElevation(this, Context.ToPixels(Element.Shadow.BlurRadius));
 
-#if MONOANDROID90
                     // Color only exists on Pie and beyond.
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
                     {
                         this.SetOutlineAmbientShadowColor(Element.Shadow.Color.ToAndroid());
                         this.SetOutlineSpotShadowColor(Element.Shadow.Color.ToAndroid());
                     }
-#endif
                 }
 
                 if (hasShadowOrElevation)
@@ -148,7 +136,7 @@ namespace Xamarin.Forms.PancakeView.Droid
                 return;
 
             bool cornerRadiusIsDefault = Element.CornerRadius == (CornerRadius)PancakeView.CornerRadiusProperty.DefaultValue;
-            bool backgroundColorIsDefault = !Element.BackgroundGradientStops.Any() && Element.BackgroundColor == (Color)VisualElement.BackgroundColorProperty.DefaultValue;
+            bool backgroundColorIsDefault = !Element.BackgroundGradientStops.Any() && Element.BackgroundColor == (Microsoft.Maui.Graphics.Color)VisualElement.BackgroundColorProperty.DefaultValue;
 
             if (backgroundColorIsDefault && cornerRadiusIsDefault)
             {

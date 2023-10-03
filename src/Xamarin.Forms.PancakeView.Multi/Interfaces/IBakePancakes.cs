@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
     public interface IBakePancakes
     {

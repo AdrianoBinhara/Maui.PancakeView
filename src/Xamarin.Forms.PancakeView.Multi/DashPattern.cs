@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
     [TypeConverter(typeof(DashPatternTypeConverter))]
     public struct DashPattern

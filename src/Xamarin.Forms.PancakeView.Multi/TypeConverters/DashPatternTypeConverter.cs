@@ -1,13 +1,22 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
-    [Xaml.TypeConversion(typeof(DashPattern))]
-    public class DashPatternTypeConverter : TypeConverter
+    [TypeConverter(typeof(DashPattern))]
+    public class DashPatternTypeConverter : IValueConverter
     {
-        public override object ConvertFromInvariantString(string value)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ConvertFromInvariantString(value.ToString());
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+
+        public DashPattern ConvertFromInvariantString(string value)
         {
             if (value != null)
             {

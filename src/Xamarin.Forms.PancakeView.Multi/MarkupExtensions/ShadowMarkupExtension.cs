@@ -1,7 +1,6 @@
 ﻿using System;
-using Xamarin.Forms.Xaml;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
     [AcceptEmptyServiceProvider]
     public class ShadowMarkupExtension : BindableObject, IMarkupExtension<DropShadow>

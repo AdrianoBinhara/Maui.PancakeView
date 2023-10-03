@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-
-namespace Xamarin.Forms.PancakeView
+﻿namespace Maui.PancakeView
 {
     public class GradientStop : BindableObject
     {

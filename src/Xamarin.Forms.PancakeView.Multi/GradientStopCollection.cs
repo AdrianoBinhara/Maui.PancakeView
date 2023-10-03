@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace Xamarin.Forms.PancakeView
+namespace Maui.PancakeView
 {
     public class GradientStopCollection : ObservableCollection<GradientStop>
     {

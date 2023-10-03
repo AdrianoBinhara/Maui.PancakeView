@@ -1,4 +1,4 @@
-﻿namespace Xamarin.Forms.PancakeView
+﻿namespace Maui.PancakeView
 {
     public enum BorderDrawingStyle
     {

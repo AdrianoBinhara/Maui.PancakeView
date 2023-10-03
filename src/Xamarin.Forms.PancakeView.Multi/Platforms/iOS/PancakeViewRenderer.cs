@@ -1,20 +1,22 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using CoreAnimation;
+﻿using CoreAnimation;
 using CoreGraphics;
 using Foundation;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+using Microsoft.Maui.Controls.Handlers.Compatibility;
+using Microsoft.Maui.Controls.Platform;
+using Microsoft.Maui.Platform;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.PancakeView.iOS;
-using Xamarin.Forms.Platform.iOS;
-using Controls = Xamarin.Forms.PancakeView;
+using Color = Microsoft.Maui.Graphics.Color;
+using Controls = Maui.PancakeView;
+using Point = Microsoft.Maui.Graphics.Point;
+using SizeF = Microsoft.Maui.Graphics.SizeF;
 
-[assembly: ExportRenderer(typeof(Controls.PancakeView), typeof(PancakeViewRenderer))]
-namespace Xamarin.Forms.PancakeView.iOS
+namespace Maui.PancakeView.iOS
 {
-    public class PancakeViewRenderer : ViewRenderer<PancakeView, UIView>
+    public class PancakeViewRenderer : Microsoft.Maui.Controls.Handlers.Compatibility.ViewRenderer<PancakeView, UIView>
     {
         private UIView _actualView;
         private UIView _wrapperView;
@@ -42,16 +44,16 @@ namespace Xamarin.Forms.PancakeView.iOS
                 _wrapperView = new UIView();
 
                 // Add the subviews to the actual view.
-                foreach (var item in NativeView.Subviews)
+                foreach (var item in this.Subviews)
                 {
                     _actualView.AddSubview(item);
                 }
 
                 // If this contains GestureRecognizers, hook those up to the _actualView.
                 // This is what the user sees and interacts with.
-                if (NativeView.GestureRecognizers != null)
+                if (this.GestureRecognizers != null)
                 {
-                    foreach (var gesture in NativeView.GestureRecognizers)
+                    foreach (var gesture in this.GestureRecognizers)
                     {
                         _actualView.AddGestureRecognizer(gesture);
                     }
@@ -131,7 +133,7 @@ namespace Xamarin.Forms.PancakeView.iOS
 
             var elementColor = Element.BackgroundColor;
 
-            if (!elementColor.IsDefault)
+            if (!elementColor.IsDefault())
                 _colorToRender = elementColor.ToUIColor();
             else
                 _colorToRender = color.ToUIColor();
@@ -211,7 +213,7 @@ namespace Xamarin.Forms.PancakeView.iOS
             {
                 var borderLayer = new CAShapeLayer
                 {
-                    StrokeColor = Element.Border.Color == Color.Default ? UIColor.Clear.CGColor : Element.Border.Color.ToCGColor(),
+                    StrokeColor = Element.Border.Color.IsDefault() ? UIColor.Clear.CGColor : Element.Border.Color.ToCGColor(),
                     FillColor = null,
                     Name = layerName
                 };
@@ -219,13 +221,13 @@ namespace Xamarin.Forms.PancakeView.iOS
                 switch (Element.Border.DrawingStyle)
                 {
                     case BorderDrawingStyle.Inside:
-                        borderLayer.LineWidth = (nfloat)Element.Border.Thickness * 2;
+                        borderLayer.LineWidth = (NFloat)Element.Border.Thickness * 2;
                         break;
                     case BorderDrawingStyle.Outside:
-                        borderLayer.LineWidth = (nfloat)Element.Border.Thickness * 2;
+                        borderLayer.LineWidth = (NFloat)Element.Border.Thickness * 2;
                         break;
                     case BorderDrawingStyle.Centered:
-                        borderLayer.LineWidth = (nfloat)Element.Border.Thickness;
+                        borderLayer.LineWidth = (NFloat)Element.Border.Thickness;
                         break;
                 }
 
@@ -253,9 +255,9 @@ namespace Xamarin.Forms.PancakeView.iOS
 
                 if (Element.Border.GradientStops != null && Element.Border.GradientStops.Any())
                 {
-                    var gradientFrame = Bounds.Inset(-(nfloat)Element.Border.Thickness, -(nfloat)Element.Border.Thickness);
+                    var gradientFrame = Bounds.Inset(-(NFloat)Element.Border.Thickness, -(NFloat)Element.Border.Thickness);
                     var gradientLayer = CreateGradientLayer(Element.Border.GradientStartPoint, Element.Border.GradientEndPoint, gradientFrame);
-                    gradientLayer.Position = new CGPoint((gradientFrame.Width / 2) - ((nfloat)Element.Border.Thickness), (gradientFrame.Height / 2) - ((nfloat)Element.Border.Thickness));
+                    gradientLayer.Position = new CGPoint((gradientFrame.Width / 2) - ((NFloat)Element.Border.Thickness), (gradientFrame.Height / 2) - ((NFloat)Element.Border.Thickness));
 
                     // Create a clone from the border layer and use that one as the mask.
                     // Why? Because the mask and the border somehow can't be the same, so
@@ -265,7 +267,7 @@ namespace Xamarin.Forms.PancakeView.iOS
                         Path = borderLayer.Path,
                         Position = new CGPoint(Element.Border.Thickness, Element.Border.Thickness),
                         FillColor = null,
-                        LineWidth = (nfloat)Element.Border.Thickness,
+                        LineWidth = (NFloat)Element.Border.Thickness,
                         StrokeColor = UIColor.Red.CGColor,
                         LineDashPattern = borderLayer.LineDashPattern
                     };

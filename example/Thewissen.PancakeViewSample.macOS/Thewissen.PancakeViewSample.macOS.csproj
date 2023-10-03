@@ -98,9 +98,9 @@
       <Project>{ABE29A80-FFA3-40E7-B8C4-87D5D6B1C8C1}</Project>
       <Name>Thewissen.PancakeViewSample</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Xamarin.Forms.PancakeView.Multi\Xamarin.Forms.PancakeView.Multi.csproj">
+    <ProjectReference Include="..\..\src\Xamarin.Forms.PancakeView.Multi\Maui.PancakeView.Multi.csproj">
       <Project>{B178CFA1-03F5-45F0-ACDC-33149B2D4631}</Project>
-      <Name>Xamarin.Forms.PancakeView.Multi</Name>
+      <Name>Maui.PancakeView.Multi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

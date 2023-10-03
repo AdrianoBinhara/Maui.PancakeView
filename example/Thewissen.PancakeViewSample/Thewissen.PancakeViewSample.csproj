@@ -22,7 +22,7 @@
         <Folder Include="Converters\" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Xamarin.Forms.PancakeView.Multi\Xamarin.Forms.PancakeView.Multi.csproj" />
+        <ProjectReference Include="..\..\src\Xamarin.Forms.PancakeView.Multi\Maui.PancakeView.Multi.csproj" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Resources\Poppins-Bold.ttf" />

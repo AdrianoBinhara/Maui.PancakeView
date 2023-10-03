@@ -1,8 +1,8 @@
-﻿using System;
-using CoreGraphics;
+﻿using CoreGraphics;
+using System.Runtime.InteropServices;
 using UIKit;
 
-namespace Xamarin.Forms.PancakeView.iOS
+namespace Maui.PancakeView.iOS
 {
     public static class DrawingExtensions
     {
@@ -12,16 +12,16 @@ namespace Xamarin.Forms.PancakeView.iOS
 
             path.MoveTo(new CGPoint(rect.Width - cornerRadius.TopRight, rect.Y));
 
-            path.AddArc(new CGPoint((float)rect.X + rect.Width - cornerRadius.TopRight, (float)rect.Y + cornerRadius.TopRight), (nfloat)cornerRadius.TopRight, (float)(Math.PI * 1.5), (float)Math.PI * 2, true);
+            path.AddArc(new CGPoint((float)rect.X + rect.Width - cornerRadius.TopRight, (float)rect.Y + cornerRadius.TopRight), (NFloat)cornerRadius.TopRight, (float)(Math.PI * 1.5), (float)Math.PI * 2, true);
             path.AddLineTo(new CGPoint(rect.Width, rect.Height - cornerRadius.BottomRight));
 
-            path.AddArc(new CGPoint((float)rect.X + rect.Width - cornerRadius.BottomRight, (float)rect.Y + rect.Height - cornerRadius.BottomRight), (nfloat)cornerRadius.BottomRight, 0, (float)(Math.PI * .5), true);
+            path.AddArc(new CGPoint((float)rect.X + rect.Width - cornerRadius.BottomRight, (float)rect.Y + rect.Height - cornerRadius.BottomRight), (NFloat)cornerRadius.BottomRight, 0, (float)(Math.PI * .5), true);
             path.AddLineTo(new CGPoint(cornerRadius.BottomLeft, rect.Height));
 
-            path.AddArc(new CGPoint((float)rect.X + cornerRadius.BottomLeft, (float)rect.Y + rect.Height - cornerRadius.BottomLeft), (nfloat)cornerRadius.BottomLeft, (float)(Math.PI * .5), (float)Math.PI, true);
+            path.AddArc(new CGPoint((float)rect.X + cornerRadius.BottomLeft, (float)rect.Y + rect.Height - cornerRadius.BottomLeft), (NFloat)cornerRadius.BottomLeft, (float)(Math.PI * .5), (float)Math.PI, true);
             path.AddLineTo(new CGPoint(rect.X, cornerRadius.TopLeft));
 
-            path.AddArc(new CGPoint((float)rect.X + cornerRadius.TopLeft, (float)rect.Y + cornerRadius.TopLeft), (nfloat)cornerRadius.TopLeft, (float)Math.PI, (float)(Math.PI * 1.5), true);
+            path.AddArc(new CGPoint((float)rect.X + cornerRadius.TopLeft, (float)rect.Y + cornerRadius.TopLeft), (NFloat)cornerRadius.TopLeft, (float)Math.PI, (float)(Math.PI * 1.5), true);
 
             path.ClosePath();
 

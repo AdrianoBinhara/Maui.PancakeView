@@ -79,9 +79,9 @@
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Xamarin.Forms.PancakeView.Multi\Xamarin.Forms.PancakeView.Multi.csproj">
+    <ProjectReference Include="..\..\src\Xamarin.Forms.PancakeView.Multi\Maui.PancakeView.Multi.csproj">
       <Project>{b178cfa1-03f5-45f0-acdc-33149b2d4631}</Project>
-      <Name>Xamarin.Forms.PancakeView.Multi</Name>
+      <Name>Maui.PancakeView.Multi</Name>
     </ProjectReference>
     <ProjectReference Include="..\Thewissen.PancakeViewSample\Thewissen.PancakeViewSample.csproj">
       <Project>{abe29a80-ffa3-40e7-b8c4-87d5d6b1c8c1}</Project>
